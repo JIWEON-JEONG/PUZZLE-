@@ -2,23 +2,38 @@
 #include <stdio.h>
 #include <time.h>
 #include <stdlib.h>
+#include <windows.h>
+
 
 
 int getKey();
 int init(int* puzzle);
+int check(int* puzzle);
+void display(int* puzzle);
+void getIndex(int key, int currentIndex, int *changeIndex);
+int change(int* puzzle, int changeIndex, int currentIndex);
 
 int main() {
-	int puzzle[9] = {0,};
-	int key,i,currentIndex;
+	int puzzle[9] = { 0, };
+	int key, i, currentIndex, changeIndex = 0, result;
 	srand(time(NULL));
-	key = getKey();
 	currentIndex = init(puzzle);
-	for (i = 0; i < 9; i++) {
-		printf("%2d", puzzle[i]);
-		if (i==2 || i==5 || i==8) {
-			printf("\n");
+	display(puzzle);
+	while (1){
+		key = getKey();
+		if (key != 0) {
+			getIndex(key, currentIndex, &changeIndex);
+			currentIndex = change(puzzle, changeIndex, currentIndex);
+			display(puzzle);
+		}
+		result = check(puzzle);
+		if (result == 1) {
+			break;
 		}
 	}
+	printf("유철... 이걸 통과하다니 제법인걸..");
+	
+	
 
 	return 0;
 }
