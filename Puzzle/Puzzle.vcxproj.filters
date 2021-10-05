@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="puzzle.c">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="getKey.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
@@ -34,6 +31,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="change.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="play.c">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="main.c">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
