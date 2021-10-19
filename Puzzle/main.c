@@ -34,15 +34,16 @@ int main() {
 		display();
 	}
 	else {
-		printf("메모리공간이 부족하여 메모리를 할당 할 수 없습니다.");
+		printf("\n메모리공간이 부족하여 메모리를 할당 할 수 없습니다.\n");
 		return 0;
 	}
 	for (;;) {
 		count = play();
 		if (count > maxCount) {
+			printf("\n횟수가 초과되었습니다.\n게임을 종료합니다.\n");
 			return 0;
 		}
-		result = check(pz);
+		result = check();
 		if (result == 1) {
 			printf("\nFinish!!!\n");
 			printf("continue? (y/n)");
