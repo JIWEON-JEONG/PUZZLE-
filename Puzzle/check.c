@@ -2,9 +2,7 @@
 #include <stdio.h>
 
 // extern Global_Variable
-extern int pz[3][3];
-extern int currRow;
-extern int currColumn;
+extern int(*pz)[3];
 
 int check() {
 	int i;

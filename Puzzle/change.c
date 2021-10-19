@@ -2,15 +2,15 @@
 #include <stdio.h>
 
 // extern Global_Variable
-extern int pz[3][3];
-extern int currRow;
-extern int currColumn;
+extern int(*pz)[3];
+extern int cRow, cColumn;
+extern int mRow, mColumn;
 
-void change(int changeRow, int changeColumn) {
+void change() {
 	int temp;
-	temp = pz[changeColumn][changeRow];
-	pz[changeColumn][changeRow] = pz[currColumn][currRow];
-	pz[currColumn][currRow] = temp;
-	currRow = changeRow;
-	currColumn = changeColumn;
+	temp = pz[mColumn][mRow];
+	pz[mColumn][mRow] = pz[cColumn][cRow];
+	pz[cColumn][cRow] = temp;
+	cRow = mRow;
+	cColumn = mColumn;
 }

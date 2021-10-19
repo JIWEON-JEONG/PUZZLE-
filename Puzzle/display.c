@@ -2,15 +2,16 @@
 #include <stdio.h>
 #include <windows.h>
 
-// extern Global_Variable
-extern int pz[3][3];
-extern int currRow;
-extern int currColumn;
+extern int(*pz)[3];
+extern int cRow, cColumn;
+extern int count;
+extern int maxCount;
 
 void display() {
 	int i;
 	system("cls");
 	for(i=0;i<9;i++){
+
 		if (pz[i/3][i%3] == 0) {
 			printf(" *  ");
 		}
@@ -21,5 +22,9 @@ void display() {
 			printf("\n");
 		}
 	}
-	
+	printf("\ncRow : %d\n", cRow);
+	printf("cColumn : %d\n", cColumn);
+	printf("=========================\n");
+	printf("maxCount : %d\n", maxCount);
+	printf("count : %d\n", count);
 }

@@ -5,27 +5,44 @@
 #include <windows.h>
 
 //Global_Variable
-int pz[3][3] = { 0,1,2,3,4,5,6,7,8 };
-int currRow, currColumn;
+int(*pz)[3];
+int cRow, cColumn;
+int mRow, mColumn;
+int count = 0;
+int maxCount = 0;
+
 //Import_Function
 void init();
 void display();
+int play();
 int check();
-void change(int changeRow, int changeColumn);
-void getIndex(int key, int* changeRow, int* changeColumn);
-int play(int *pzPoint);
 
 int main() {
-	int* pzPoint[] = {"star","one","two","three","four","five","six","seven","eight"};
-	int  count,result,i,r;
+	//커서 없애기 코드 
+	CONSOLE_CURSOR_INFO CurInfo;
+	CurInfo.dwSize = 1;
+	CurInfo.bVisible = FALSE;
+	SetConsoleCursorInfo(GetStdHandle(STD_OUTPUT_HANDLE), &CurInfo);
+	
+	//main Code
+	int  key = 0, result;
 	char reGame;
-	back:
 	srand(time(NULL));
-	init();
-	display();
+	pz = (int(*)[3])malloc(sizeof(int[3])*3);
+	if (pz != NULL) {
+		init();
+		display();
+	}
+	else {
+		printf("메모리공간이 부족하여 메모리를 할당 할 수 없습니다.");
+		return 0;
+	}
 	for (;;) {
-		count = play(pzPoint);
-		result = check();
+		count = play();
+		if (count > maxCount) {
+			return 0;
+		}
+		result = check(pz);
 		if (result == 1) {
 			printf("\nFinish!!!\n");
 			printf("continue? (y/n)");
